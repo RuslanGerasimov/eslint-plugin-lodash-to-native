@@ -21,7 +21,17 @@ var ruleTester = new RuleTester();
 ruleTester.run("map", rule, {
 
     valid: [
-        `test.map(function(item) { return item + 22; })`,
+        `var a = Array.isArray(a) ? a.map(function(i) {
+            return i + 2;
+        }) : _.map(a, function(i) {
+            return i + 2;
+        });`,
+        `Array.isArray(collection) ? collection.map(function(item) {
+                return item + 22;
+            }) : _.map(collection, function(item) {
+                return item + 22;
+            });`,
+       `test.map(function(item) { return item + 22; })`,
         `if(Array.isArray(collection)) {
             collection.map(function(item) {
                 return item + 22;
