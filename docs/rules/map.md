@@ -1,17 +1,28 @@
 # lodash map to Array.map (map)
 
-Please describe the origin of the rule here.
+Задание ШРИ 2020 (Тулинг)
 
 
 ## Rule Details
 
-This rule aims to...
+This rule aims to user native `Array.map` method instead of lodash `map` method.
 
 Examples of **incorrect** code for this rule:
 
 ```js
 
-// fill me in
+return _.map(collection, function(item) {
+    return item;
+});
+
+```
+
+
+```js
+
+const a = _.map(collection, function(item) {
+    return item;
+});
 
 ```
 
@@ -19,18 +30,24 @@ Examples of **correct** code for this rule:
 
 ```js
 
-// fill me in
+if(Array.isArray(collection)) {
+    return collection.map(function(item) {
+        return item;
+    });
+} else {
+    return _.map(collection, function(item) {
+        return item;
+    });
+}
 
 ```
 
-### Options
+```js
 
-If there are any options, describe them here. Otherwise, delete this section.
+const a = Array.isArray(collection) ? collection.map(function(item) {
+        return item;
+    }) : _.map(collection, function(item) {
+        return item;
+    });   
 
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+```

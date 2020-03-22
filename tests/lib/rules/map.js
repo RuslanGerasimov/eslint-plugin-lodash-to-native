@@ -59,7 +59,6 @@ ruleTester.run("map", rule, {
                 return item + 22; 
             })
         }`,
-
         `if(Array.isArray(collection)){
             collection.map(function(item) { 
                 return item + 22; })
